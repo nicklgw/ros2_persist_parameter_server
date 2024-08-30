@@ -52,6 +52,11 @@ ParameterServer::ParameterServer(
         {
           param_update_ = true;
         }
+        if(param_update_)
+        {
+          StoreYamlFile();
+          param_update_ = false;
+        }
       }
 
       return result;
