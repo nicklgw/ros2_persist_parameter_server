@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Launch a server."""
+"""Launch a parameter_server."""
 
 from launch import LaunchDescription
 from launch.substitutions import EnvironmentVariable
@@ -27,7 +27,7 @@ def generate_launch_description():
     parameters_file_path += '/param/' + parameters_file_name
     return LaunchDescription([
         launch_ros.actions.Node(
-            package='parameter_server', executable='server', output='screen',
+            package='parameter_server', executable='parameter_server', output='screen',
             # respawn in 5.0 seconds
             respawn = True, respawn_delay = 5.0,
 
@@ -35,7 +35,7 @@ def generate_launch_description():
             # these will be loaded as normal parameter without event on /parameter_events topic.
             parameters=[parameters_file_path],
 
-            # this example to load persistent parameter files into parameter server,
+            # this example to load persistent parameter files into parameter parameter_server,
             # these parameters descibed in parameter_server.yaml with prefix "persistent" will be registered as persistent parameter.
             arguments=['--file-path', parameters_file_path]
         )

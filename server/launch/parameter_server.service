@@ -1,0 +1,14 @@
+[Unit]
+Description=ros2 parameter server that other nodes can write/read parameters including persistent parameters.
+
+[Service]
+Type=simple
+User=bzlrobot
+ExecStart=/usr/bin/bash /opt/ros/humble/share/parameter_server/launch/parameter_server.sh
+ExecStop=/usr/bin/killall -INT parameter_server
+KillSignal=SIGINT
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

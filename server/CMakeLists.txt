@@ -32,7 +32,7 @@ find_package(rmw REQUIRED)
 find_package(Boost REQUIRED COMPONENTS program_options filesystem)
 find_package(yaml_cpp_vendor REQUIRED)
 
-add_executable(server
+add_executable(parameter_server
  src/parameter_server.cpp
  src/main.cpp
 )
@@ -43,7 +43,7 @@ add_executable(server
 find_package(yaml-cpp 0.8.0 QUIET)
 if (yaml-cpp_FOUND)
   message(STATUS "yaml-cpp package is greater equal than version 0.8.0")
-  target_link_libraries(server
+  target_link_libraries(parameter_server
     rclcpp::rclcpp
     rcutils::rcutils
     ${Boost_LIBRARIES}
@@ -52,7 +52,7 @@ if (yaml-cpp_FOUND)
 else()
   message(STATUS "yaml-cpp package is less than version 0.8.0")
   find_package(yaml-cpp REQUIRED)
-  target_link_libraries(server
+  target_link_libraries(parameter_server
     rclcpp::rclcpp
     rcutils::rcutils
     ${Boost_LIBRARIES}
@@ -60,14 +60,14 @@ else()
   )
 endif()
 
-target_include_directories(server
+target_include_directories(parameter_server
   PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
 )
 
-ament_target_dependencies(server rclcpp rclcpp_components std_msgs rcutils)
+ament_target_dependencies(parameter_server rclcpp rclcpp_components std_msgs rcutils)
 
-install(TARGETS server DESTINATION lib/${PROJECT_NAME})
+install(TARGETS parameter_server DESTINATION lib/${PROJECT_NAME})
 
 # Install launch files.
 install(DIRECTORY
