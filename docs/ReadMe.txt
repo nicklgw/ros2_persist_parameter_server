@@ -1,14 +1,18 @@
 启动持久化节点服务
-ros2 run parameter_server server --file-path /home/nick/ros2_persist_parameter_server_ws/src/ros2_persist_parameter_server/server/param/parameter_server.yaml
+ros2 launch parameter_server parameter_server.launch.py
 
 设置两次才会保存到对应的yaml文件中
-nick@nick-dell:~/ros2_persist_parameter_server_ws/src/ros2_persist_parameter_server$ ros2 param set /parameter_server persistent.some_int 87
-nick@nick-dell:~/ros2_persist_parameter_server_ws/src/ros2_persist_parameter_server$ ros2 param set /parameter_server persistent.some_int 87
+ros2 param set /parameter_server persistent.some_int 87
+ros2 param set /parameter_server persistent.some_int 87
+
+ros2 param set /parameter_server persistent.lock_request 1 # 锁机请求字段   锁机1, 解锁0
+ros2 param set /parameter_server persistent.lock_request 1 # 锁机请求字段   锁机1, 解锁0
+
 观察yaml配置文件中，对应的字段是否修改
-nick@nick-dell:~$ cat /home/nick/ros2_persist_parameter_server_ws/src/ros2_persist_parameter_server/server/param/parameter_server.yaml
+cat /home/nick/zhengping_ws/params_server_ws/install/parameter_server/share/parameter_server/param/parameters_via_launch.yaml
 
+ros2 param dump /parameter_server
 
-nick@nick-dell:~/ros2_persist_parameter_server_ws/src/ros2_persist_parameter_server$ ros2 param dump /parameter_server
 /parameter_server:
   ros__parameters:
     a_string: Hello world

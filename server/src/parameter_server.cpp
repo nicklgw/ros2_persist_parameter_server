@@ -591,6 +591,7 @@ void ParameterServer::StoreYamlFile()
     SaveNode(out, parameter_config);
     std::ofstream fout(persistent_yaml_file_);
     fout << out.c_str();
+    RCLCPP_INFO(this->get_logger(), "parameter_config \n %s", out.c_str());
     fout.close();
   }
 }

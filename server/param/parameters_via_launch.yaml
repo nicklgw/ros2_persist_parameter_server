@@ -1,4 +1,4 @@
-/**:
+/parameter_server:
     ros__parameters:
         # This file is expected to be used with ros2 launch
         # > ros2 launch parameter_server parameter_server.launch.py
@@ -11,6 +11,7 @@
         some_lists:
             some_integers: [1, 2, 3, 4]
         persistent:
+            lock_request: 0
             some_int: 1
             a_string: 'Hello world'
             pi: 3.14

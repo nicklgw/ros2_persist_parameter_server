@@ -37,6 +37,6 @@ def generate_launch_description():
 
             # this example to load persistent parameter files into parameter server,
             # these parameters descibed in parameter_server.yaml with prefix "persistent" will be registered as persistent parameter.
-            #arguments=['--file-path', '/tmp/parameter_server.yaml']
+            arguments=['--file-path', parameters_file_path]
         )
     ])
