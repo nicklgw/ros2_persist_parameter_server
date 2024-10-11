@@ -8,8 +8,8 @@ ros2 launch parameter_server parameter_server.launch.py
 ros2 param set /parameter_server persistent.some_int 87
 ros2 param set /parameter_server persistent.some_int 87
 
-ros2 param set /parameter_server persistent.lock_request 1 # 锁机请求字段   锁机1, 解锁0
-ros2 param set /parameter_server persistent.lock_request 1 # 锁机请求字段   锁机1, 解锁0
+ros2 param set /parameter_server persistent.lock_request 1 # 锁机请求字段   锁机1, 解锁2
+ros2 param set /parameter_server persistent.lock_request 1 # 锁机请求字段   锁机1, 解锁2
 
 观察yaml配置文件中，对应的字段是否修改
 cat /home/nick/zhengping_ws/params_server_ws/install/parameter_server/share/parameter_server/param/parameters_via_launch.yaml
@@ -78,5 +78,5 @@ systemctl start parameter_server.service
 查看system.service自启服务日志
 journalctl -n 100 -u parameter_server.service
 
-bzlrobot@raspberrypi:/opt/ros/humble/share/parameter_server/param$ sudo chmod 0777 parameters_via_launch.yaml
-bzlrobot@raspberrypi:/opt/ros/humble/share/parameter_server/launch$ sudo mkdir -m a=rwx -p /var/log/bzlrobot/parameter_server
+bzlrobot@raspberrypi:/opt/ros/humble/share/parameter_server/param$ sudo chmod 0777 parameters_via_launch.yaml # 修改配置文件权限
+bzlrobot@raspberrypi:/opt/ros/humble/share/parameter_server/launch$ sudo mkdir -m a=rwx -p /var/log/bzlrobot/parameter_server # 修改日志目录权限
