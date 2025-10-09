@@ -3,7 +3,7 @@ Description=ros2 parameter server that other nodes can write/read parameters inc
 
 [Service]
 Type=simple
-User=bzlrobot
+User=orangepi
 ExecStart=/usr/bin/bash /opt/ros/humble/share/parameter_server/launch/parameter_server.sh
 ExecStop=/usr/bin/killall -INT parameter_server
 KillSignal=SIGINT

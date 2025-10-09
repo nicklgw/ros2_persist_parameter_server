@@ -1,6 +1,7 @@
 /parameter_server:
     ros__parameters:
         persistent:
+            pitch_calibration: 0.000001
             lock_request: 0
             task_magic: 123456
             task_time:  0.0001
