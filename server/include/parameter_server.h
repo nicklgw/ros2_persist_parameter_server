@@ -15,6 +15,10 @@
 #ifndef __PARAMETER_SERVER_H__
 #define __PARAMETER_SERVER_H__
 
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+
 #include <memory>
 #include <string>
 #include <sstream>

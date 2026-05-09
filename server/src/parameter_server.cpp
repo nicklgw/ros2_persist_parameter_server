@@ -593,6 +593,19 @@ void ParameterServer::StoreYamlFile()
     fout << out.c_str();
     RCLCPP_INFO(this->get_logger(), "parameter_config \n %s", out.c_str());
     fout.close();
+
+    {
+      int fd = open(persistent_yaml_file_.c_str(), O_WRONLY);
+      if (fd != -1)
+      {
+        fsync(fd);  // 确保数据写入磁盘
+        close(fd);
+      }
+      else
+      {
+        RCLCPP_ERROR(this->get_logger(), "Failed to open file for fsync: %s", strerror(errno));
+      }
+    }
   }
 }
 
